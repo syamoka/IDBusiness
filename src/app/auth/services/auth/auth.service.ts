@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
 import { CheckPhone, Login, Token } from './model';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
+import { CountryCodeInterface } from '../../models/country-code.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +28,12 @@ export class AuthService {
   }
   isAuthenticated(): string | null {
     return localStorage && localStorage.getItem('token');
+  }
+  public getCountryCode(): Observable<CountryCodeInterface[]> {
+    return this.http
+      .get<{ message: string; result: CountryCodeInterface[] }>(
+        `${environment.API_URL}GetCountryCode`
+      )
+      .pipe(map((e) => e.result));
   }
 }

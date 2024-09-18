@@ -1,6 +1,7 @@
 <div class="container">
-  <div class="left_side_container">
+  <div class="left-side-container">
     <div>
+      <!--      HERE WAS ID BANK SVG I TOOK IT INTO ASSETS FOLDER-->
       <svg
         width="131"
         height="32"
@@ -53,31 +54,68 @@
         </defs>
       </svg>
     </div>
-    <p class="description">asdasdasd</p>
+    <p class="description">Make all transactions without leaving home</p>
   </div>
-  <div class="right_side_container">
-    <div class="top">lang section</div>
+  <div class="right-side-container">
+    <div class="language-toggle-container">
+      @for (lang of supportedLanguages; track lang.id; let last = $last) {
+      <span>{{ lang.value }}</span>
+      @if (!last) {
+      <span> | </span>
+      } }
+    </div>
 
-    <div class="login">
+    <div class="login" [formGroup]="loginForm">
       <p class="login-title">LOG IN</p>
-      <div class="phone-number-container">
-        <div class="country-code-container">
-          <label for="code">Select Code</label>
-          <div class="selected" id="code">+374</div>
+      <div class="login-form-container">
+        <div class="phone-number-container">
+          <div class="country-code-input-container input-container">
+            <label for="code">Select Code</label>
+            <div class="selected" id="code">
+              <span>{{ loginForm.get("code")?.value }}</span>
+              <img
+                class="country-code-dropdown-toggle"
+                (click)="openCountryCodeDropdown()"
+                src="/assets/svg/dropdown.svg"
+                alt=""
+                height="26"
+                width="26"
+              />
+            </div>
+          </div>
+          <div class="number-container input-container">
+            <label for="number">Enter mobile number</label>
+            <input type="number" id="number" formControlName="phone" />
+          </div>
         </div>
-        <div class="number-container">
-          <label for="code">Enter mobile number</label>
-          <input type="number" />
+
+        @if(showPassword()) {
+        <div class="input-container password-input-container">
+          <label for="password">Enter Password</label>
+          <input id="password" type="password" formControlName="password" />
         </div>
+        } @if(showCountryCodes) {
+        <div class="country-code-dropdown-container">
+          <span class="close-dropdown-toggle" (click)="closeDropdown()">
+            <img src="/assets/svg/close_button.svg" alt="X"
+          /></span>
+          @for (code of countryCodes$ | async; track code.countryCode) {
+          <div class="country-code" (click)="selectCountryCode(code)">
+            <span class="code"><b>+</b>{{ code.countryCode }}</span>
+            <span class="country-name">{{ code.countryName }}</span>
+          </div>
+          }
+        </div>
+        }
       </div>
 
-      @if(showPassword()) {
-      <input type="password" />
-      } @if(showPassword()) {
-      <app-button [buttonText]="'Login'" (click)="login()"></app-button>
-      } @else {
-      <app-button [buttonText]="'Next'" (click)="checkPhone()"></app-button>
-      }
+      <div class="button-container">
+        @if(showPassword()) {
+        <app-button [buttonText]="'Login'" (click)="login()"></app-button>
+        } @else {
+        <app-button [buttonText]="'Next'" (click)="checkPhone()"></app-button>
+        }
+      </div>
     </div>
   </div>
 </div>

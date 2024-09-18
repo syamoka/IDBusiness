@@ -1,7 +1,7 @@
 .container {
   display: flex;
   height: 100%;
-  .left_side_container {
+  .left-side-container {
     background-color: #000000b2;
     flex: 1;
     padding-top: 100px;
@@ -9,28 +9,152 @@
     color: #ffffff;
     .description {
       margin-top: 20px;
-      font-family: Roboto;
+      font-family: Roboto, serif;
       font-size: 16px;
       font-weight: 400;
       line-height: 21px;
       max-width: 140px;
     }
   }
-  .right_side_container {
+
+  .right-side-container {
     background-color: #ffffff;
     flex: 1;
-    .login-title {
-      color: #4d4d4d;
-    }
-  }
-}
+    display: flex;
+    flex-direction: column;
+    padding: 20px 30px;
+    .language-toggle-container {
+      display: flex;
+      justify-content: end;
 
-.phone-number-container {
-  display: flex;
-  gap: 5px;
-  .country-code-container {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-  }
-  .number-container {
+      span {
+        padding-left: 3px;
+      }
+    }
+
+    .login {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .login-title {
+        color: #4d4d4d;
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 23.44px;
+        margin-bottom: 50px;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: end;
+      }
+
+      .login-form-container {
+        position: relative;
+        z-index: 1;
+        margin-bottom: 30px;
+
+        .input-container {
+          width: 100%;
+        }
+
+        .phone-number-container {
+          display: flex;
+          gap: 5px;
+          margin-bottom: 20px;
+
+          .country-code-input-container {
+            .selected {
+              border: 1px solid rgba(0, 0, 0, 0.2);
+              border-radius: 10px 0 0 10px;
+              padding: 5px;
+              height: 38px;
+              width: 132px;
+              display: flex;
+              justify-content: space-around;
+            }
+
+            .country-code-dropdown-toggle {
+              cursor: pointer;
+            }
+          }
+
+          .number-container {
+            input {
+              border-radius: 0 10px 10px 0;
+              border: 1px solid #00000033;
+              width: 236px;
+            }
+          }
+
+          .country-code-dropdown-container {
+            position: absolute;
+          }
+        }
+
+        .country-code-dropdown-container {
+          position: absolute;
+          top: 50%;
+          width: 90%;
+          overflow-y: scroll;
+          max-height: 40vh;
+          background-color: white;
+          z-index: 2;
+          box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1686),
+            0px 8px 20px -3px rgba(0, 0, 0, 0.149),
+            0px -1.5px 0px 0px rgba(255, 255, 255, 0.251) inset,
+            inset 0px -0.5px 0px 0px rgba(0, 0, 0, 0.2);
+          //&::before {
+          //  content: '';
+          //  position: absolute;
+          //  width: 100%;
+          //  top: 0;
+          //  mix-blend-mode: screen;
+          //}
+
+          .country-code {
+            display: flex;
+            justify-content: space-between;
+            span {
+              margin: 0 20px;
+              font-size: 14px;
+              line-height: 16.41px;
+              color: #4d4d4d;
+              min-width: 20%;
+              border-bottom: 1px solid #4d4d4d80;
+              padding: 10px 0;
+              b {
+                margin-right: 10px;
+              }
+            }
+            .country-name {
+              flex-grow: 1;
+            }
+            &:hover {
+              background-color: #4d4d4d80;
+              span {
+                color: #ffffff;
+              }
+            }
+          }
+          .code {
+            font-weight: 700;
+          }
+          .close-dropdown-toggle {
+            display: flex;
+            justify-content: end;
+            padding: 10px;
+            cursor: pointer;
+          }
+        }
+
+        .password-input-container {
+          input {
+            border-radius: 10px;
+          }
+        }
+      }
+    }
   }
 }
