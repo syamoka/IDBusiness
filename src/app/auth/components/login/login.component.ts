@@ -23,7 +23,7 @@ export class LoginComponent implements OnDestroy {
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
   showPassword = signal(false);
-  public loginForm = this._initForm();
+  public loginForm = this.initForm();
   public readonly supportedLanguages = this.languageService.supportedLanguages;
   public readonly countryCodes$ = this.authService.getCountryCode();
   public showCountryCodes: boolean = false;
@@ -41,6 +41,7 @@ export class LoginComponent implements OnDestroy {
       .subscribe({
         next: (res) => {
           this.authService.saveToken(res.token);
+          this.router.navigate(['/dashboard']);
         },
       });
   }
@@ -48,7 +49,7 @@ export class LoginComponent implements OnDestroy {
   checkPhone() {
     this.authService
       .checkPhone({
-        username: this._formatPhoneNumber(),
+        username: this.formatPhoneNumber(),
       })
       .pipe(takeUntil(this.destroy$))
       .subscribe({
@@ -59,7 +60,7 @@ export class LoginComponent implements OnDestroy {
       });
   }
 
-  private _initForm() {
+  private initForm() {
     return this.fb.record({
       phone: ['93333333'],
       code: ['374'],
@@ -67,7 +68,7 @@ export class LoginComponent implements OnDestroy {
     });
   }
 
-  private _formatPhoneNumber() {
+  private formatPhoneNumber() {
     return `${this.loginForm.get('code')?.value}${
       this.loginForm.get('phone')?.value
     }`;

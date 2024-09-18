@@ -1,1 +1,15 @@
-{}
+{
+  "login_welcome": "Make all transactions without leaving home",
+  "select_code": "Select Code",
+  "mobile_number": "Enter mobile number",
+  "password": "Enter password",
+  "login_btn": "Login",
+  "next_btn": "Next",
+  "dashboard_title": "Title",
+  "search": "Search",
+  "account_type": "Account type",
+  "account_number": "Account number",
+  "currency": "Currency",
+  "balance": "Balance",
+  "additional_info": "Additional Info"
+}

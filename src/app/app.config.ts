@@ -9,11 +9,12 @@ import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { spinnerInterceptor } from './shared/interceptors/spinner.interceptor';
+import { tokenInterceptor } from './shared/interceptors/token.interceptor';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(withInterceptors([spinnerInterceptor])),
+    provideHttpClient(withInterceptors([tokenInterceptor, spinnerInterceptor])),
     provideAnimationsAsync(),
   ],
 };

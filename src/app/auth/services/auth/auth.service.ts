@@ -26,7 +26,11 @@ export class AuthService {
   saveToken(token: string): void {
     localStorage.setItem('token', token);
   }
-  isAuthenticated(): string | null {
+  isAuthenticated(): boolean {
+    return localStorage && !!localStorage.getItem('token');
+  }
+
+  getToken(): string | null {
     return localStorage && localStorage.getItem('token');
   }
   public getCountryCode(): Observable<CountryCodeInterface[]> {
@@ -35,5 +39,9 @@ export class AuthService {
         `${environment.API_URL}GetCountryCode`
       )
       .pipe(map((e) => e.result));
+  }
+
+  logout() {
+    localStorage.clear();
   }
 }

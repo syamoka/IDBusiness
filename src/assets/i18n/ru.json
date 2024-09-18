@@ -1,1 +1,15 @@
-{}
+{
+  "login_welcome": "Совершайте все операции, не выходя из дома",
+  "select_code": "Выберите код",
+  "mobile_number": "Введите номер телефона",
+  "password": "Введите пароль",
+  "login_btn": "Войти",
+  "next_btn": "Далее",
+  "dashboard_title": "Заголовок",
+  "search": "Поиск",
+  "account_type": "Тип счета",
+  "account_number": "Номер счета",
+  "currency": "Валюта",
+  "balance": "Баланс",
+  "additional_info": "Дополнительная информация"
+}
