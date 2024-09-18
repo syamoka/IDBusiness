@@ -19,7 +19,9 @@
         display: flex;
         padding: 20px 0;
         gap: 30px;
-        border-bottom: 1px solid rgba(255, 71, 51, 1);
+        &:not(:last-child) {
+          border-bottom: 1px solid rgba(255, 71, 51, 1);
+        }
         .flex {
           display: flex;
           flex-direction: column;

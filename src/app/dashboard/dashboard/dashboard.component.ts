@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { HeaderComponent } from '../components/header/header.component';
 import { BankService } from '../services/bank/bank.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [HeaderComponent, TranslateModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })

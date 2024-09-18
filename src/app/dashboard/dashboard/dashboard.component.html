@@ -3,7 +3,7 @@
   <!-- <div class="breadcrumb">Breadcrumb2</div> -->
   <div class="content">
     <div class="content-title">
-      <h3>Title</h3>
+      <h3>{{ "dashboard_title" | translate }}</h3>
     </div>
     <div class="content-section">
       @if(true) { @for(item of [1,1,1,1,1,1,1,];track item) {
@@ -40,21 +40,21 @@
           </svg>
         </div>
         <div class="flex">
-          <span class="value">Account Type</span>
+          <span class="value">{{ "account_type" | translate }}</span>
           <span class="key">BANK ACCOUNT</span>
         </div>
 
         <div class="flex">
-          <span class="value">Account Number</span>
+          <span class="value">{{ "account_number" | translate }}</span>
           <span class="key">*********</span>
         </div>
         <div class="flex">
-          <span class="value">Currency</span>
+          <span class="value">{{ "currency" | translate }}</span>
           <span class="key">AMD</span>
         </div>
 
         <div class="flex">
-          <span class="value">Balance</span>
+          <span class="value">{{ "balance" | translate }}</span>
           <span class="key">*******</span>
         </div>
       </div>
@@ -64,7 +64,7 @@
 
   <div class="additional-content">
     <div class="additional-content-title">
-      <span>ADDITIONAL DATA</span>
+      <span>{{ "additional_info" | translate }}</span>
     </div>
     <div class="additional-content-body">
       <span>Lorem ipsum dolor sit amet</span>

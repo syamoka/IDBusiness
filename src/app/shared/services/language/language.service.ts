@@ -7,4 +7,5 @@ export class LanguageService {
     { id: 'arm', value: 'ՀԱՅ' },
     { id: 'en', value: 'EN' },
   ];
+  selectedLanguage = localStorage.getItem('lang') || 'am';
 }
