@@ -1,27 +1,28 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, inject } from '@angular/core';
 import { HeaderComponent } from '../components/header/header.component';
 import { BankService } from '../services/bank/bank.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { AsyncPipe } from '@angular/common';
+import { Observable } from 'rxjs';
+import { IBankAccount } from './models/bank-acount.interface';
+import { SearchComponent } from '../components/search/search.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [HeaderComponent, TranslateModule],
+  imports: [HeaderComponent, TranslateModule, AsyncPipe, SearchComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
   private readonly bankService = inject(BankService);
-  constructor() {
-    this.bankService.getBankAccounts().subscribe((res) => {
-      console.log(res);
-    });
+  public readonly result$: Observable<{
+    bankAccounts: IBankAccount[];
+    transactions: any[];
+    additionalData: { description: string };
+  }> = this.bankService.fetchAllData();
 
-    this.bankService.getTransactions().subscribe((res) => {
-      console.log(res);
-    });
-    this.bankService.getAdditionalData().subscribe((res) => {
-      console.log(res);
-    });
+  public changeInputType(inputRef: HTMLInputElement) {
+    inputRef.type = inputRef.type === 'password' ? 'text' : 'password';
   }
 }

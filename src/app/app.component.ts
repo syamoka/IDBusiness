@@ -18,8 +18,6 @@ export class AppComponent implements OnInit {
   private readonly languageService = inject(LanguageService);
 
   ngOnInit(): void {
-    this.translationService.setDefaultLang(
-      this.languageService.selectedLanguage
-    );
+    this.translationService.use(this.languageService.selectedLanguage);
   }
 }

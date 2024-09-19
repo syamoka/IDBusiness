@@ -5,12 +5,127 @@ header {
   background-color: rgba(77, 77, 77, 1);
   padding: 0 20px;
   height: 50px;
+  .logo {
+    flex-grow: 1;
+  }
+
+  .user-container {
+    display: flex;
+    align-items: center;
+    color: white;
+    gap: 10px;
+    padding: 0 10px;
+
+    .user-data {
+      position: relative;
+      .user-data-dropdown {
+        position: absolute;
+        right: 0;
+        margin-top: 10px;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+        background:
+                /* Gradient layer */ linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.7) 0%,
+            rgba(255, 255, 255, 0.3) 100%
+          ),
+          /* Solid background layer */ rgba(255, 255, 255, 1);
+        box-shadow: 0 0 8px 0 #0000002b, 0 8px 20px -3px #00000026,
+          0 -1.5px 0 0 #ffffff40 inset, 0 -0.5px 0 0 #00000033 inset;
+        border-radius: 10px;
+        color: #4d4d4d;
+        .close-icon {
+          text-align: end;
+          padding: 10px;
+          cursor: pointer;
+        }
+
+        .item {
+          display: flex;
+          gap: 20px;
+          padding: 10px 15px;
+          border-bottom: 1px solid #4d4d4d;
+          width: 100%;
+          div {
+            width: max-content;
+            flex-grow: 1;
+          }
+          .role {
+            text-align: end;
+          }
+          &:hover {
+            background-color: #4d4d4d80;
+            color: white;
+          }
+        }
+      }
+
+      .user-data-dropdown.opened {
+        opacity: 1;
+      }
+
+      .user-info {
+        font-size: 12px;
+        font-weight: 500;
+        text-align: end;
+
+        .dropdown-toggle-icon {
+          transition: transform 1s ease-in-out;
+          cursor: pointer;
+
+          &active {
+            background-color: red;
+          }
+        }
+      }
+
+      .user-passport-number {
+        display: flex;
+        align-items: center;
+      }
+    }
+    .first-last-name {
+      width: 25px;
+      height: 25px;
+      border-radius: 100%;
+      background-color: white;
+      color: #4d4d4d;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+    }
+  }
   .actions {
     display: flex;
     align-items: center;
     gap: 20px;
     &-item {
       cursor: pointer;
+      position: relative;
+      .count {
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        top: -5px;
+        right: -5px;
+        font-size: 10px;
+        text-align: center;
+      }
     }
+  }
+}
+.language-toggle-container {
+  display: flex;
+  justify-content: end;
+
+  span {
+    padding-left: 3px;
+    color: white;
+    cursor: pointer;
   }
 }

@@ -3,7 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
 import { CheckPhone, Login, Token } from './model';
 import { map, Observable } from 'rxjs';
-import { CountryCodeInterface } from '../../models/country-code.interface';
+import { ICountryCode } from '../../models/country-code.interface';
+import { IUserData } from '../../../dashboard/dashboard/models/user-data.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -19,8 +20,12 @@ export class AuthService {
     return this.http.post<Token>(`${environment.API_URL}login`, body);
   }
 
-  getUserData() {
-    return this.http.get(`${environment.API_URL}getUserData`);
+  getUserData(): Observable<IUserData> {
+    return this.http
+      .get<{ message: string; result: IUserData }>(
+        `${environment.API_URL}getUserData`
+      )
+      .pipe(map((e) => e.result));
   }
 
   saveToken(token: string): void {
@@ -33,9 +38,9 @@ export class AuthService {
   getToken(): string | null {
     return localStorage && localStorage.getItem('token');
   }
-  public getCountryCode(): Observable<CountryCodeInterface[]> {
+  public getCountryCode(): Observable<ICountryCode[]> {
     return this.http
-      .get<{ message: string; result: CountryCodeInterface[] }>(
+      .get<{ message: string; result: ICountryCode[] }>(
         `${environment.API_URL}GetCountryCode`
       )
       .pipe(map((e) => e.result));

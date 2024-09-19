@@ -7,6 +7,14 @@
   .breadcrumb {
   }
   .content {
+    &-title {
+      padding: 35px 0;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 23.44px;
+      text-align: left;
+    }
+
     &-item {
     }
     &-section {
@@ -15,12 +23,33 @@
       border: 1px solid rgba(255, 71, 51, 1);
       border-radius: 8px;
       padding: 0 20px;
+      margin-top: 15px;
       &-item {
         display: flex;
         padding: 20px 0;
         gap: 30px;
         &:not(:last-child) {
           border-bottom: 1px solid rgba(255, 71, 51, 1);
+        }
+        .hidden-value {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          input {
+            border: none;
+            pointer-events: none;
+          }
+          .eye-icon {
+            height: 20px;
+            width: 20px;
+            padding: 13px;
+            border: 0.5px solid #4d4d4db2;
+            border-radius: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+          }
         }
         .flex {
           display: flex;
@@ -32,16 +61,45 @@
           .value {
             color: rgba(77, 77, 77, 0.5);
           }
+
+          .truncated-text {
+            max-width: 120px;
+            min-width: 120px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+          }
         }
       }
     }
   }
 
   .additional-content {
+    border: 1px solid #4d4d4d80;
+    border-radius: 10px;
+    margin-top: 15px;
+    max-width: 820px;
     &-title {
       background: rgba(77, 77, 77, 0.5);
+      padding: 10px 10px 10px 20px;
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 14px;
     }
     &-body {
+      padding: 10px 10px 0 20px;
+      min-height: 100px;
+    }
+  }
+}
+::ng-deep .dashboard-search {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  .search-container {
+    background: rgba(0, 0, 0, 0.05) !important;
+    input {
+      color: rgba(77, 77, 77, 0.5) !important;
     }
   }
 }

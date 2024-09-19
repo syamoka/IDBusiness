@@ -17,6 +17,7 @@ import { spinnerInterceptor } from './shared/interceptors/spinner.interceptor';
 import { tokenInterceptor } from './shared/interceptors/token.interceptor';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { authInterceptor } from './shared/interceptors/auth.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -25,7 +26,9 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(withInterceptors([tokenInterceptor, spinnerInterceptor])),
+    provideHttpClient(
+      withInterceptors([spinnerInterceptor, tokenInterceptor, authInterceptor])
+    ),
     provideAnimationsAsync(),
     importProvidersFrom(
       TranslateModule.forRoot({
