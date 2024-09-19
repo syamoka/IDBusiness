@@ -9,7 +9,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     .pipe(delay(2000))
     .pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
+        if (error.status === 401 || error.status === 403) {
           router.navigate(['/login']);
           localStorage.removeItem('token');
         }
