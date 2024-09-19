@@ -4,9 +4,14 @@
   justify-content: center;
   flex-direction: column;
   gap: 24px;
-  .breadcrumb {
-  }
-  .content {
+  .dashboard {
+    .breadcrumb-container {
+      padding: 20px 0;
+      width: 100%;
+      span {
+        cursor: pointer;
+      }
+    }
     &-title {
       padding: 35px 0;
       font-size: 20px;
@@ -98,6 +103,10 @@
   justify-content: flex-end;
   .search-container {
     background: rgba(0, 0, 0, 0.05) !important;
+    svg {
+      fill: #4d4d4d;
+      stroke: #4d4d4d;
+    }
     input {
       color: rgba(77, 77, 77, 0.5) !important;
     }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment.development';
 import { CheckPhone, Login, Token } from './model';
-import { map, Observable } from 'rxjs';
+import { map, Observable, shareReplay } from 'rxjs';
 import { ICountryCode } from '../../models/country-code.interface';
 import { IUserData } from '../../../dashboard/dashboard/models/user-data.interface';
 
@@ -43,7 +43,10 @@ export class AuthService {
       .get<{ message: string; result: ICountryCode[] }>(
         `${environment.API_URL}GetCountryCode`
       )
-      .pipe(map((e) => e.result));
+      .pipe(
+        map((e) => e.result),
+        shareReplay(1)
+      );
   }
 
   logout() {

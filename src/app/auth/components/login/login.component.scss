@@ -98,13 +98,19 @@
 
             .country-code-dropdown-toggle {
               cursor: pointer;
+              transform: rotate(0deg);
+              transition: transform 0.1s ease-in-out;
+
+              &.opened {
+                transform: rotate(180deg);
+              }
             }
           }
         }
 
         .country-code-dropdown-container {
           position: absolute;
-          top: 50%;
+          top: 80%;
           width: 100%;
           overflow-y: scroll;
           max-height: 40vh;

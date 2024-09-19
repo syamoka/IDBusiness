@@ -1,17 +1,36 @@
 <app-header></app-header>
 <div class="container">
-  <div class="breadcrumb">Breadcrumb2</div>
   @if(result$ | async; as result) {
-  <div class="content">
-    <div class="content-title">
+  <div class="dashboard">
+    <div class="breadcrumb-container">
+      @for(breadcrumb of breadcrumbs;track breadcrumb;let last=$last) {
+      <span>
+        {{ breadcrumb }}
+      </span>
+
+      @if(!last) {<svg
+        width="14"
+        height="8"
+        viewBox="0 0 14 8"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1 3.5C0.723858 3.5 0.5 3.72386 0.5 4C0.5 4.27614 0.723858 4.5 1 4.5L1 3.5ZM13.3536 4.35355C13.5488 4.15829 13.5488 3.84171 13.3536 3.64645L10.1716 0.464466C9.97631 0.269204 9.65973 0.269204 9.46447 0.464466C9.2692 0.659728 9.2692 0.976311 9.46447 1.17157L12.2929 4L9.46447 6.82843C9.2692 7.02369 9.2692 7.34027 9.46447 7.53553C9.65973 7.7308 9.97631 7.7308 10.1716 7.53553L13.3536 4.35355ZM1 4.5L13 4.5L13 3.5L1 3.5L1 4.5Z"
+          fill="#4D4D4D"
+        />
+      </svg>
+      } }
+    </div>
+    <div class="dashboard-title">
       <h3>{{ "dashboard_title" | translate }}</h3>
     </div>
     <div class="dashboard-search">
       <app-search></app-search>
     </div>
-    <div class="content-section">
+    <div class="dashboard-section">
       @for(acc of result.bankAccounts ;track acc) {
-      <div class="content-section-item">
+      <div class="dashboard-section-item">
         <div class="card-icon">
           <img src="/assets/svg/card.svg" width="88" height="54" alt="" />
         </div>

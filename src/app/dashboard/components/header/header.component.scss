@@ -8,7 +8,6 @@ header {
   .logo {
     flex-grow: 1;
   }
-
   .user-container {
     display: flex;
     align-items: center;
@@ -23,6 +22,7 @@ header {
         right: 0;
         margin-top: 10px;
         opacity: 0;
+        display: none;
         transition: all 0.3s ease-in-out;
         background: linear-gradient(
             180deg,
@@ -30,6 +30,7 @@ header {
             rgba(255, 255, 255, 0.3) 100%
           ),
           rgba(255, 255, 255, 1);
+        z-index: 1;
         box-shadow: 0 0 8px 0 #0000002b, 0 8px 20px -3px #00000026,
           0 -1.5px 0 0 #ffffff40 inset, 0 -0.5px 0 0 #00000033 inset;
         border-radius: 10px;
@@ -63,6 +64,7 @@ header {
 
       .user-data-dropdown.opened {
         opacity: 1;
+        display: block;
       }
 
       .user-info {
@@ -71,11 +73,12 @@ header {
         text-align: end;
 
         .dropdown-toggle-icon {
-          transition: transform 1s ease-in-out;
+          transform: rotate(0deg);
+          transition: transform 0.1s ease-in-out;
           cursor: pointer;
 
-          &active {
-            background-color: red;
+          &.opened {
+            transform: rotate(180deg);
           }
         }
       }

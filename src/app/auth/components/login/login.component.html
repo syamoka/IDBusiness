@@ -24,6 +24,7 @@
               <span>{{ loginForm.get("code")?.value }}</span>
               <img
                 class="country-code-dropdown-toggle"
+                [class.opened]="showCountryCodes"
                 (click)="openCountryCodeDropdown()"
                 src="/assets/svg/dropdown.svg"
                 alt=""
@@ -62,19 +63,19 @@
             alt=""
           />
         </div>
-        } @if(showCountryCodes) {
+        } @if(showCountryCodes) { @if(countryCodes$ | async; as countryCodes) {
         <div class="country-code-dropdown-container">
           <span class="close-dropdown-toggle" (click)="closeDropdown()">
             <img src="/assets/svg/close_button.svg" alt="X"
           /></span>
-          @for (code of countryCodes$ | async; track code.countryCode) {
+          @for (code of countryCodes; track code.countryCode) {
           <div class="country-code" (click)="selectCountryCode(code)">
             <span class="code"><b>+</b>{{ code.countryCode }}</span>
             <span class="country-name">{{ code.countryName }}</span>
           </div>
           }
         </div>
-        }
+        } }
       </div>
 
       <div class="button-container">

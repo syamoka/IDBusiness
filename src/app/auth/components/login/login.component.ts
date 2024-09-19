@@ -96,6 +96,11 @@ export class LoginComponent implements OnDestroy {
   }
 
   public openCountryCodeDropdown() {
+    if (this.showCountryCodes) {
+      this.closeDropdown();
+      return;
+    }
+
     this.showCountryCodes = true;
   }
 
