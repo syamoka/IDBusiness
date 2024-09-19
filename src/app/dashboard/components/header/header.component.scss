@@ -24,13 +24,12 @@ header {
         margin-top: 10px;
         opacity: 0;
         transition: all 0.3s ease-in-out;
-        background:
-                /* Gradient layer */ linear-gradient(
+        background: linear-gradient(
             180deg,
             rgba(255, 255, 255, 0.7) 0%,
             rgba(255, 255, 255, 0.3) 100%
           ),
-          /* Solid background layer */ rgba(255, 255, 255, 1);
+          rgba(255, 255, 255, 1);
         box-shadow: 0 0 8px 0 #0000002b, 0 8px 20px -3px #00000026,
           0 -1.5px 0 0 #ffffff40 inset, 0 -0.5px 0 0 #00000033 inset;
         border-radius: 10px;
@@ -47,6 +46,7 @@ header {
           padding: 10px 15px;
           border-bottom: 1px solid #4d4d4d;
           width: 100%;
+          cursor: pointer;
           div {
             width: max-content;
             flex-grow: 1;

@@ -1,6 +1,6 @@
 <app-header></app-header>
 <div class="container">
-  <!-- <div class="breadcrumb">Breadcrumb2</div> -->
+  <div class="breadcrumb">Breadcrumb2</div>
   @if(result$ | async; as result) {
   <div class="content">
     <div class="content-title">
@@ -10,20 +10,25 @@
       <app-search></app-search>
     </div>
     <div class="content-section">
-      @for(item of result.bankAccounts ;track item) {
+      @for(acc of result.bankAccounts ;track acc) {
       <div class="content-section-item">
         <div class="card-icon">
           <img src="/assets/svg/card.svg" width="88" height="54" alt="" />
         </div>
         <div class="flex">
           <span class="value">{{ "account_type" | translate }}</span>
-          <span class="key truncated-text">{{ item.accountType }}</span>
+          <span class="key truncated-text">{{ acc.accountType }}</span>
         </div>
 
         <div class="flex">
           <span class="value">{{ "account_number" | translate }}</span>
           <div class="hidden-value">
-            <input class="key" type="password" #accNumber />
+            <input
+              class="key"
+              type="password"
+              [value]="acc.accountNumber"
+              #accNumber
+            />
             <div class="eye-icon" (click)="changeInputType(accNumber)">
               <img
                 src="/assets/svg/ic_eye_hide.svg"
@@ -36,13 +41,18 @@
         </div>
         <div class="flex">
           <span class="value">{{ "currency" | translate }}</span>
-          <span class="key">{{ item.currency }}</span>
+          <span class="key">{{ acc.currency }}</span>
         </div>
 
         <div class="flex">
           <span class="value">{{ "balance" | translate }}</span>
           <div class="hidden-value">
-            <input class="key" type="password" #balanceInput />
+            <input
+              class="key"
+              type="password"
+              [value]="acc.balance"
+              #balanceInput
+            />
             <div class="eye-icon" (click)="changeInputType(balanceInput)">
               <img
                 src="/assets/svg/ic_eye_hide.svg"
